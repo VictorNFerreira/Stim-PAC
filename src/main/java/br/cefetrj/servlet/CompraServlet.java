@@ -21,7 +21,7 @@ public class CompraServlet extends HttpServlet
     private static final long serialVersionUID = 4L;
     private CompraDao dao = new CompraDao();
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+    /*public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
         try
         {
@@ -50,7 +50,7 @@ public class CompraServlet extends HttpServlet
 
         try
         {
-            dao.inserir(compra);
+            dao.inserir(compra, conta);
             
             List<Compra> compras = dao.listarTodos();
             request.setAttribute("compras", compras);
@@ -64,6 +64,6 @@ public class CompraServlet extends HttpServlet
 
         }
 
-    }
+    }*/
 
 }

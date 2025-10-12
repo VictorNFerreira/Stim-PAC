@@ -21,7 +21,7 @@ public class EmpresaServlet extends HttpServlet
     private static final long serialVersionUID = 3L;
     private EmpresaDao dao = new EmpresaDao();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+    /*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
         try
         {
@@ -48,13 +48,13 @@ public class EmpresaServlet extends HttpServlet
             if(request.getParameter("tipo").equals("desenvolvedora"))
             {
                 Desenvolvedora empresa = new Desenvolvedora(nome);
-                dao.inserir(empresa);
+                dao.inserir(empresa, null);
 
             }
             else if(request.getParameter("tipo").equals("distribuidora"))
             {
                 Distribuidora empresa = new Distribuidora(nome);
-                dao.inserir(empresa);
+                dao.inserir(empresa, null);
 
             }
 
@@ -70,6 +70,6 @@ public class EmpresaServlet extends HttpServlet
 
         }
 
-    }
+    }*/
 
 }

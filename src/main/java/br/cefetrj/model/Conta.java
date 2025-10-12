@@ -4,12 +4,8 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="conta")
-public class Conta
+public class Conta extends Entidade
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
     @Column(name = "nome")
     private String nome;
 
@@ -35,18 +31,6 @@ public class Conta
         this.setNome(nome);
         this.setEmail(email);
         this.setSenha(senha);
-
-    }
-
-    public int getId()
-    {
-        return this.id;
-
-    }
-
-    public void setId(int id)
-    {
-        this.id = id;
 
     }
 

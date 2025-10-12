@@ -1,25 +1,22 @@
 package br.cefetrj.servlet;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
-
-import br.cefetrj.dao.BibliotecaDao;
 import br.cefetrj.model.Biblioteca;
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+
 
 @WebServlet("/Biblioteca")
-public class BibliotecaServlet extends HttpServlet
+public class BibliotecaServlet extends GenericServlet<Biblioteca>
 {
-    private static final long serialVersionUID = 5L;
-    private BibliotecaDao dao = new BibliotecaDao();
+    @Override
+    protected Biblioteca preencherEntidade(HttpServletRequest request)
+    {
+        Biblioteca biblioteca = new Biblioteca();
+        return biblioteca;
+
+    }
     
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+    /*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
         try
         {
@@ -35,5 +32,5 @@ public class BibliotecaServlet extends HttpServlet
 
         }
 
-    }
+    }*/
 }

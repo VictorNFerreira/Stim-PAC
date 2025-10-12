@@ -17,7 +17,7 @@
 
             <nav class="cabecalho-menu">
                 <ul>
-                    <li><a href="Conta">Contas</a></li>
+                    <li><a href="conta">Contas</a></li>
                     <li><a href="Produto">Produtos</a></li>
                     <li><a href="Empresa">Empresas</a></li>
                     <li><a href="Compra">Compras</a></li>
@@ -29,12 +29,12 @@
         <main class="principal">
             <div class="principal-titulo">
                 <h1>Lista de Contas</h1> 
-                <a href="cadastro-conta.jsp">Adicionar Conta</a>
+                <a href="<%= request.getAttribute("urlSubmit") %>?acao=novo">Adicionar Conta</a>
              </div>
 
             <dl>
                 <%
-                    List<Conta> contas = (List<Conta>) request.getAttribute("contas");
+                    List<Conta> contas = (List<Conta>) request.getAttribute("lista");
                     for(Conta conta : contas)
                     {
                 %>

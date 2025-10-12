@@ -6,11 +6,8 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="biblioteca")
-public class Biblioteca
+public class Biblioteca extends Entidade
 {
-    @Id
-    private int id;
-
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
@@ -21,18 +18,6 @@ public class Biblioteca
 
     @Column(name = "quantidade_itens")
     private int quantidadeItens;
-
-    public int getId()
-    {
-        return this.id;
-
-    }
-
-    public void setId(int id)
-    {
-        this.id = id;
-
-    }
 
     public Conta getConta()
     {

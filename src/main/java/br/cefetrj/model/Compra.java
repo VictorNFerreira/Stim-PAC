@@ -1,18 +1,14 @@
 package br.cefetrj.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.*;
 
 
 @Entity
 @Table(name = "compra")
-public class Compra
+public class Compra extends Entidade
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
     @ManyToOne
     private Conta conta;
 
@@ -23,7 +19,7 @@ public class Compra
     private double valor;
 
     @Transient
-    private Date dataCompra;
+    private LocalDate dataCompra;
 
     @Column(name = "forma_de_pagamento")
     private String formaDePagamento;
@@ -33,24 +29,12 @@ public class Compra
 
     }
 
-    public Compra(Conta conta, /*Produto produto,*/ double valor/* , Date dataCompra*/)
+    public Compra(Conta conta, /*Produto produto,*/ double valor/* , LocalDate dataCompra*/)
     {
         this.setConta(conta);
         /*this.setProduto(produto);*/
         this.setValor(valor);
         /*this.setDataCompra(dataCompra);*/
-
-    }
-
-    public int getId()
-    {
-        return this.id;
-
-    }
-
-    public void setId(int id)
-    {
-        this.id = id;
 
     }
 
@@ -90,13 +74,13 @@ public class Compra
         
     }
 
-    public Date getDataCompra()
+    public LocalDate getDataCompra()
     {
         return this.dataCompra;
 
     }
 
-    public void setDataCompra(Date dataCompra)
+    public void setDataCompra(LocalDate dataCompra)
     {
         this.dataCompra = dataCompra;
 

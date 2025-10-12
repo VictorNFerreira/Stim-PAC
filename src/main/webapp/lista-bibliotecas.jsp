@@ -17,7 +17,7 @@
 
             <nav class="cabecalho-menu">
                 <ul>
-                    <li><a href="Conta">Contas</a></li>
+                    <li><a href="conta">Contas</a></li>
                     <li><a href="Produto">Produtos</a></li>
                     <li><a href="Empresa">Empresas</a></li>
                     <li><a href="Compra">Compras</a></li>
@@ -33,7 +33,7 @@
 
             <dl>
                 <%
-                    List<Biblioteca> bibliotecas = (List<Biblioteca>) request.getAttribute("bibliotecas");
+                    List<Biblioteca> bibliotecas = (List<Biblioteca>) request.getAttribute("lista");
                     for(Biblioteca biblioteca : bibliotecas)
                     {
                 %>

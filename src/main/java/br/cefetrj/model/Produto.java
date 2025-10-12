@@ -1,33 +1,37 @@
 package br.cefetrj.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-public abstract class Produto
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "produto")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo")
+public abstract class Produto extends Entidade
 {
-    protected int id;
+    @Column(name = "nome")
     protected String nome;
+
+    @Column(name = "preco")
     protected double preco;
-    protected Date dataPublicacao;
+
+    @Transient
+    protected LocalDate dataPublicacao;
+
+    @Column(name = "avaliacoes")
     protected double avaliacoes;
+
+    @Transient
     protected Desenvolvedora desenvolvedora;
+
+    @Transient
     protected Distribuidora distribuidora;
 
     public Produto(String nome, double preco)
     {
         this.setNome(nome);
         this.setPreco(preco);
-
-    }
-
-    public int getId()
-    {
-        return this.id;
-
-    }
-
-    public void setId(int id)
-    {
-        this.id = id;
 
     }
 
@@ -55,13 +59,13 @@ public abstract class Produto
 
     }
 
-    public Date getDataPublicacao()
+    public LocalDate getDataPublicacao()
     {
         return dataPublicacao;
 
     }
 
-    public void setDataPublicacao(Date dataPublicacao)
+    public void setDataPublicacao(LocalDate dataPublicacao)
     {
         this.dataPublicacao = dataPublicacao;
 

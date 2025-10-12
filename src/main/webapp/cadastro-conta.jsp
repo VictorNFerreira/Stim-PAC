@@ -8,7 +8,9 @@
     </head>
 
     <body>
-        <form action="Conta" method="post">
+        <form action="conta" method="post">
+            <input type="hidden" name="acao" value="cadastrar">
+
             <label for="nome">Nome: </label>
             <input id="nome" type="text" name="nome">
 

@@ -1,6 +1,13 @@
 package br.cefetrj.dao;
 
-public class ProdutoDao
+import br.cefetrj.model.Produto;
+
+public class ProdutoDao extends GenericDao<Produto>
 {
-    
+    public ProdutoDao()
+    {
+        super(Produto.class);
+
+    }
+
 }

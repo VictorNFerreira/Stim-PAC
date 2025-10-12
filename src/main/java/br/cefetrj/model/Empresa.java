@@ -6,12 +6,8 @@ import jakarta.persistence.*;
 @Table(name = "empresa")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo")
-public abstract class Empresa
+public abstract class Empresa extends Entidade
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    protected int id;
-
     @Column(name = "nome")
     protected String nome;
 
@@ -23,18 +19,6 @@ public abstract class Empresa
     public Empresa(String nome)
     {
         this.setNome(nome);
-
-    }
-   
-    public int getId()
-    {
-        return this.id;
-
-    }
-
-    public void setId(int id)
-    {
-        this.id = id;
 
     }
 
