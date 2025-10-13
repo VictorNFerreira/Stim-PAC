@@ -55,55 +55,62 @@ public abstract class GenericServlet<Classe extends Entidade> extends HttpServle
 
         try
         {
-            switch(acao)
+            if(acao.equals("inserir"))
             {
-                case "deletar":
-                    int id = Integer.parseInt(request.getParameter("id"));
-                    dao.deletar(id);
-                    response.sendRedirect(urlSubmit + "?acao=listar");
-                    break;
+                try
+                {
+                    request.getRequestDispatcher("cadastro-" + classe.getSimpleName().toLowerCase() + ".jsp").forward(request, response);
 
-                case "listar":
-                    List<Classe> lista = dao.listarTodos();
-                    request.setAttribute("lista", lista);
-                    try
-                    {
-                        request.getRequestDispatcher("lista-" + classe.getSimpleName().toLowerCase() + "s.jsp").forward(request, response);
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
 
-                    }
-                    catch(Exception e)
-                    {
-                        e.printStackTrace();
+                }
 
-                    }
-                    break;
+            }
 
-                case "buscar":
-                    int idBuscar = Integer.parseInt(request.getParameter("id"));
-                    Classe entidade = dao.listarPorId(idBuscar);
-                    request.setAttribute("entidade", entidade);
-                    try
-                    {
-                        request.getRequestDispatcher("cadastro-" + classe.getSimpleName().toLowerCase() + ".jsp").forward(request, response);
+            else if(acao.equals("listar"))
+            {
+                List<Classe> lista = dao.listarTodos();
+                request.setAttribute("lista", lista);
+                try
+                {
+                    request.getRequestDispatcher("lista-" + classe.getSimpleName().toLowerCase() + "s.jsp").forward(request, response);
 
-                    }
-                    catch (Exception e)
-                    {
-                        e.printStackTrace();
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
 
-                    }
-                    break;
-                case "novo":
-                    try
-                    {
-                        request.getRequestDispatcher("cadastro-" + classe.getSimpleName().toLowerCase() + ".jsp").forward(request, response);
-                    }
-                    catch (Exception e)
-                    {
-                        e.printStackTrace();
+                }
 
-                    }
-                    break;
+            }
+                    
+            else if(acao.equals("listarPorId"))
+            {
+                int idBuscar = Integer.parseInt(request.getParameter("id"));
+                Classe entidade = dao.listarPorId(idBuscar);
+                request.setAttribute("entidade", entidade);
+                try
+                {
+                    request.getRequestDispatcher("cadastro-" + classe.getSimpleName().toLowerCase() + ".jsp").forward(request, response);
+
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+
+                }
+                
+            }
+            
+            else if(acao.equals("deletar"))
+            {
+                int id = Integer.parseInt(request.getParameter("id"));
+                dao.deletar(id);
+                response.sendRedirect(urlSubmit + "?acao=listar");
+            
             }
 
         }
@@ -126,18 +133,20 @@ public abstract class GenericServlet<Classe extends Entidade> extends HttpServle
 
         try
         {
-            switch(acao)
+            if(acao.equals("cadastrar"))
             {
-                case "cadastrar":
-                    Classe entidade = preencherEntidade(request);
-                    dao.inserir(entidade, conta);
-                    break;
-                case "atualizar":
-                    Classe entidadeAtualizada = preencherEntidade(request);
-                    dao.atualizar(entidadeAtualizada, conta);
-                    break;
-
+                Classe entidade = preencherEntidade(request);
+                dao.inserir(entidade, conta);
+                    
             }
+
+            else if(acao.equals("atualizar"))
+            {
+                Classe entidadeAtualizada = preencherEntidade(request);
+                dao.atualizar(entidadeAtualizada, conta);
+                    
+            }
+            
             response.sendRedirect(urlSubmit + "?acao=listar");
 
         }

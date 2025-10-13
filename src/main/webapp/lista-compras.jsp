@@ -21,7 +21,7 @@
                     <li><a href="Produto">Produtos</a></li>
                     <li><a href="Empresa">Empresas</a></li>
                     <li><a href="Compra">Compras</a></li>
-                    <li><a href="Biblioteca">Bibliotecas</a></li>
+                    <li><a href="biblioteca">Bibliotecas</a></li>
                 </ul>
             </nav>
         </header>
@@ -38,12 +38,14 @@
                     for(Compra compra : compras)
                     {
                 %>
-                <div>
-                    <dt>Id: <%= compra.getId() %></dt>
-                    <dd>Id da Conta: <%= compra.getConta().getId() %></dd>
-                    <dd>Id do Produto: <%= compra.getProduto() %></dd>
-                    <dd>Valor da compra: R$<%= compra.getValor() %></dd>
-                    <dd>Forma de pagamento: <%= compra.getFormaDePagamento() %></dd>
+                <div class="lista-registro">
+                    <div class="lista-dados">
+                        <dt>Id: <%= compra.getId() %></dt>
+                        <dd>Id da Conta: <%= compra.getConta().getId() %></dd>
+                        <dd>Id do Produto: <%= compra.getProduto() %></dd>
+                        <dd>Valor da compra: R$<%= compra.getValor() %></dd>
+                        <dd>Forma de pagamento: <%= compra.getFormaDePagamento() %></dd>
+                    </div>
                 </div>
                 <% } %>
             </dl>

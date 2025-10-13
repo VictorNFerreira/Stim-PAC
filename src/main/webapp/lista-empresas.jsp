@@ -23,7 +23,7 @@
                     <li><a href="Produto">Produtos</a></li>
                     <li><a href="Empresa">Empresas</a></li>
                     <li><a href="Compra">Compras</a></li>
-                    <li><a href="Biblioteca">Bibliotecas</a></li>
+                    <li><a href="biblioteca">Bibliotecas</a></li>
                 </ul>
             </nav>
         </header>
@@ -43,11 +43,13 @@
                         if(empresa instanceof Desenvolvedora)
                         {
                 %>
-                <div>
-                    <dt>
-                        <p>Id: <%= empresa.getId() %></p>
-                        <p>Nome: <%=empresa.getNome() %></p>
-                    </dt>
+                <div class="lista-registro">
+                    <div class="lista-dados">
+                        <dt>
+                            <p>Id: <%= empresa.getId() %></p>
+                            <p>Nome: <%=empresa.getNome() %></p>
+                        </dt>
+                    </div>
                 </div>
                 <%
                     }
@@ -63,11 +65,13 @@
                         if(empresa instanceof Distribuidora)
                         {
                 %>
-                <div>
-                    <dt>
-                        <p>Id: <%= empresa.getId() %></p>
-                        <p>Nome: <%=empresa.getNome() %></p>
-                    </dt>
+                <div class="lista-registro">
+                    <div class="lista-dados">
+                        <dt>
+                            <p>Id: <%= empresa.getId() %></p>
+                            <p>Nome: <%=empresa.getNome() %></p>
+                        </dt>
+                    </div>
                 </div>
                 <%
                     }

@@ -21,7 +21,7 @@
                     <li><a href="Produto">Produtos</a></li>
                     <li><a href="Empresa">Empresas</a></li>
                     <li><a href="Compra">Compras</a></li>
-                    <li><a href="Biblioteca">Bibliotecas</a></li>
+                    <li><a href="biblioteca">Bibliotecas</a></li>
                 </ul>
             </nav>
         </header>
@@ -29,7 +29,7 @@
         <main class="principal">
             <div class="principal-titulo">
                 <h1>Lista de Contas</h1> 
-                <a href="<%= request.getAttribute("urlSubmit") %>?acao=novo">Adicionar Conta</a>
+                <a href="<%= request.getAttribute("urlSubmit") %>?acao=inserir">Adicionar Conta</a>
              </div>
 
             <dl>
@@ -38,14 +38,21 @@
                     for(Conta conta : contas)
                     {
                 %>
-                <div>
-                    <dt>
-                        <p>Id: <%= conta.getId() %></p>
-                        <p>Nome: <%=conta.getNome() %></p>
-                    </dt>
-                    <dd>Email: <%= conta.getEmail() %></dd>
-                    <dd>Senha: <%= conta.getSenha() %></dd>
-                    <dd>Saldo: R$<%= conta.getSaldo() %></dd>
+                <div class="lista-registro">
+                    <div class="lista-dados">
+                        <dt>
+                            <p>Id: <%= conta.getId() %></p>
+                            <p>Nome: <%=conta.getNome() %></p>
+                        </dt>
+                        <dd>Email: <%= conta.getEmail() %></dd>
+                        <dd>Senha: <%= conta.getSenha() %></dd>
+                        <dd>Saldo: R$<%= conta.getSaldo() %></dd>
+                    </div> 
+
+                    <div class="lista-botoes">
+                        <a href="<%= request.getAttribute("urlSubmit") %>?acao=listarPorId&id=<%= conta.getId() %>">Editar Conta</a>
+                        <a href="<%= request.getAttribute("urlSubmit") %>?acao=deletar&id=<%= conta.getId() %>" onclick="return confirm('Tem certeza que deseja remover?');">Remover Conta</a>
+                    </div>
                 </div>
                 <% } %>
             </dl>

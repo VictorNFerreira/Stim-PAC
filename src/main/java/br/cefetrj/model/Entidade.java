@@ -9,7 +9,7 @@ public class Entidade
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     private LocalDate dataCriacao;
 
@@ -22,13 +22,13 @@ public class Entidade
     @ManyToOne(optional = true)
     private Conta alteradoPor;
 
-    public int getId()
+    public Integer getId()
     {
         return this.id;
 
     }
 
-    public void setId(int id)
+    public void setId(Integer id)
     {
         this.id = id;
 

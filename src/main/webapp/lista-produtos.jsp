@@ -23,7 +23,7 @@
                     <li><a href="Produto">Produtos</a></li>
                     <li><a href="Empresa">Empresas</a></li>
                     <li><a href="Compra">Compras</a></li>
-                    <li><a href="Biblioteca">Bibliotecas</a></li>
+                    <li><a href="biblioteca">Bibliotecas</a></li>
                 </ul>
             </nav>
         </header>
@@ -40,42 +40,44 @@
                     for(Produto produto : produtos)
                     {
                 %>
-                <div>
-                    <dt><%= produto.getNome() %></dt>
-                    <dd>R$<%= produto.getPreco() %></dd>
-                    
-                    <%
-                        if(produto instanceof Jogo)
-                        {
-                            Jogo jogo = (Jogo) produto;
-                    %>
-                    <dd><%= jogo.getGenero() %></dd>
-                    <%
-                        if(jogo.getDlcs().size() != 0)
-                        {
-                    %>
-                    <dd>Dlcs: 
-                    <%
-                        for(Dlc dlc : jogo.getDlcs())
-                        {
-                            out.println(dlc.getNome() + ", ");
-                            
-                        }
-                    %>
-                    </dd>
-                    <% 
-                        }
-                        }
-                    %>
-                    
-                    <%
-                        if(produto instanceof Dlc)
-                        {
-                            Dlc dlc = (Dlc) produto;
-                    %>
-                    <dd>Jogo: <%= dlc.getJogoAssociado().getNome() %></dd>
-                    <% } %>
+                <div class="lista-registro">
+                    <div class="lista-dados">
+                        <dt><%= produto.getNome() %></dt>
+                        <dd>R$<%= produto.getPreco() %></dd>
+                        
+                        <%
+                            if(produto instanceof Jogo)
+                            {
+                                Jogo jogo = (Jogo) produto;
+                        %>
+                        <dd><%= jogo.getGenero() %></dd>
+                        <%
+                            if(jogo.getDlcs().size() != 0)
+                            {
+                        %>
+                        <dd>Dlcs: 
+                        <%
+                            for(Dlc dlc : jogo.getDlcs())
+                            {
+                                out.println(dlc.getNome() + ", ");
+                                
+                            }
+                        %>
+                        </dd>
+                        <% 
+                            }
+                            }
+                        %>
+                        
+                        <%
+                            if(produto instanceof Dlc)
+                            {
+                                Dlc dlc = (Dlc) produto;
+                        %>
+                        <dd>Jogo: <%= dlc.getJogoAssociado().getNome() %></dd>
+                        <% } %>
                     </div>
+                </div>
                 <% } %>
             </dl>
         </main>

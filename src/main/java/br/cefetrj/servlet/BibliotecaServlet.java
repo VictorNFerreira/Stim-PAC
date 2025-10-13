@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 
 
-@WebServlet("/Biblioteca")
+@WebServlet("/biblioteca")
 public class BibliotecaServlet extends GenericServlet<Biblioteca>
 {
     @Override
@@ -16,21 +16,4 @@ public class BibliotecaServlet extends GenericServlet<Biblioteca>
 
     }
     
-    /*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {
-        try
-        {
-            List<Biblioteca> bibliotecas = dao.listarTodos();
-            request.setAttribute("bibliotecas", bibliotecas);
-            RequestDispatcher rd = request.getRequestDispatcher("lista-bibliotecas.jsp");
-            rd.forward(request, response);
-
-        }
-        catch(SQLException e)
-        {
-            e.printStackTrace();
-
-        }
-
-    }*/
 }

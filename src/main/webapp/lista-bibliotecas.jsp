@@ -21,7 +21,7 @@
                     <li><a href="Produto">Produtos</a></li>
                     <li><a href="Empresa">Empresas</a></li>
                     <li><a href="Compra">Compras</a></li>
-                    <li><a href="Biblioteca">Bibliotecas</a></li>
+                    <li><a href="biblioteca">Bibliotecas</a></li>
                 </ul>
             </nav>
         </header>
@@ -37,10 +37,12 @@
                     for(Biblioteca biblioteca : bibliotecas)
                     {
                 %>
-                <div>
-                    <dt>Id: <%= biblioteca.getId() %></dt>
-                    <dd>Id da conta: <%= biblioteca.getConta().getId() %></dd>
-                    <dd>Quantidade de itens: <%= biblioteca.getQuantidadeItens() %></dd>
+                <div class="lista-registro">
+                    <div class="lista-dados">
+                        <dt>Id: <%= biblioteca.getId() %></dt>
+                        <dd>Id da conta: <%= biblioteca.getConta().getId() %></dd>
+                        <dd>Quantidade de itens: <%= biblioteca.getQuantidadeItens() %></dd>
+                    </div>
                 </div>
                 <% } %>
             </dl>

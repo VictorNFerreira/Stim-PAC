@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@ page import="java.util.List" %>
+<%@ page import="br.cefetrj.model.Conta" %>
+<% Conta conta = (Conta)request.getAttribute("entidade"); %>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
@@ -8,8 +11,9 @@
     </head>
 
     <body>
-        <form action="conta" method="post">
-            <input type="hidden" name="acao" value="cadastrar">
+        <form action="<%= request.getAttribute("urlSubmit") %>" method="post">
+            <input type="hidden" name="id" value="<%= conta != null ? conta.getId() : "" %>">
+            <input type="hidden" name="acao" value="<%= conta != null ? "atualizar" : "cadastrar" %>">
 
             <label for="nome">Nome: </label>
             <input id="nome" type="text" name="nome">
