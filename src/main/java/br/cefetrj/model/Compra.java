@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "compra")
 public class Compra extends Entidade

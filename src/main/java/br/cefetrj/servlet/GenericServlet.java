@@ -59,7 +59,7 @@ public abstract class GenericServlet<Classe extends Entidade> extends HttpServle
             {
                 try
                 {
-                    request.getRequestDispatcher("cadastro-" + classe.getSimpleName().toLowerCase() + ".jsp").forward(request, response);
+                    request.getRequestDispatcher(classe.getSimpleName().toLowerCase() + "/form.jsp").forward(request, response);
 
                 }
                 catch (Exception e)
@@ -76,7 +76,7 @@ public abstract class GenericServlet<Classe extends Entidade> extends HttpServle
                 request.setAttribute("lista", lista);
                 try
                 {
-                    request.getRequestDispatcher("lista-" + classe.getSimpleName().toLowerCase() + "s.jsp").forward(request, response);
+                    request.getRequestDispatcher(classe.getSimpleName().toLowerCase() + "/lista.jsp").forward(request, response);
 
                 }
                 catch(Exception e)
@@ -94,7 +94,7 @@ public abstract class GenericServlet<Classe extends Entidade> extends HttpServle
                 request.setAttribute("entidade", entidade);
                 try
                 {
-                    request.getRequestDispatcher("cadastro-" + classe.getSimpleName().toLowerCase() + ".jsp").forward(request, response);
+                    request.getRequestDispatcher(classe.getSimpleName().toLowerCase() + "/form.jsp").forward(request, response);
 
                 }
                 catch (Exception e)
