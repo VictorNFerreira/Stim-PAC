@@ -12,13 +12,13 @@ public class ContaServlet extends GenericServlet<Conta>
     @Override
     protected Conta preencherEntidade(HttpServletRequest request)
     {
+        String id = request.getParameter("id");
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
 
         Conta conta = new Conta(nome, email, senha);
 
-        String id = request.getParameter("id");
         if(id == null || id.isEmpty())
             conta.setId(null);
         else

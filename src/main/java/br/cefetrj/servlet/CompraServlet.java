@@ -12,6 +12,7 @@ public class CompraServlet extends GenericServlet<Compra>
     @Override
     protected Compra preencherEntidade(HttpServletRequest request)
     {
+        String id = request.getParameter("id");
         ContaDao contaDao = new ContaDao();
         Conta conta = contaDao.listarPorId(Integer.parseInt(request.getParameter("conta")));
         double valor = Double.parseDouble(request.getParameter("valor"));
@@ -19,7 +20,6 @@ public class CompraServlet extends GenericServlet<Compra>
         Compra compra = new Compra(conta, valor);
         compra.setFormaDePagamento(request.getParameter("forma-pagamento"));
 
-        String id = request.getParameter("id");
         if(id == null || id.isEmpty())
             compra.setId(null);
         else

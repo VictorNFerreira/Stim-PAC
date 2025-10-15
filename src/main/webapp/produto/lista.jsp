@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="br.cefetrj.model.Produto" %>
 <%@ page import="br.cefetrj.model.Jogo" %>
@@ -21,7 +22,7 @@
                 <ul>
                     <li><a href="conta">Contas</a></li>
                     <li><a href="Produto">Produtos</a></li>
-                    <li><a href="Empresa">Empresas</a></li>
+                    <li><a href="empresa">Empresas</a></li>
                     <li><a href="compra">Compras</a></li>
                     <li><a href="biblioteca">Bibliotecas</a></li>
                 </ul>
