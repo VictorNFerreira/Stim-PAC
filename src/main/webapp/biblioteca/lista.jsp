@@ -19,7 +19,7 @@
             <nav class="cabecalho-menu">
                 <ul>
                     <li><a href="conta">Contas</a></li>
-                    <li><a href="Produto">Produtos</a></li>
+                    <li><a href="produto">Produtos</a></li>
                     <li><a href="empresa">Empresas</a></li>
                     <li><a href="compra">Compras</a></li>
                     <li><a href="biblioteca">Bibliotecas</a></li>

@@ -21,7 +21,7 @@
             <nav class="cabecalho-menu">
                 <ul>
                     <li><a href="conta">Contas</a></li>
-                    <li><a href="Produto">Produtos</a></li>
+                    <li><a href="produto">Produtos</a></li>
                     <li><a href="empresa">Empresas</a></li>
                     <li><a href="compra">Compras</a></li>
                     <li><a href="biblioteca">Bibliotecas</a></li>
@@ -32,26 +32,28 @@
         <main class="principal">
             <div class="principal-titulo">
                 <h1>Lista de Produtos</h1> 
-                <a href="cadastro-produto.jsp">Adicionar Produto</a>
+                <a href="<%= request.getAttribute("urlSubmit") %>?acao=inserir">Adicionar Produto</a>
              </div>
 
             <dl>
                 <%
-                    List<Produto> produtos = (List<Produto>) request.getAttribute("produtos");
+                    List<Produto> produtos = (List<Produto>) request.getAttribute("lista");
                     for(Produto produto : produtos)
                     {
                 %>
                 <div class="lista-registro">
                     <div class="lista-dados">
-                        <dt><%= produto.getNome() %></dt>
-                        <dd>R$<%= produto.getPreco() %></dd>
-                        
+                        <dt>
+                            <p>Id: <%= produto.getId() %></p>
+                            <p>Nome: <%= produto.getNome() %></p>
+                        </dt>
+                        <dd>Preço: R$<%= produto.getPreco() %></dd>
                         <%
                             if(produto instanceof Jogo)
                             {
                                 Jogo jogo = (Jogo) produto;
                         %>
-                        <dd><%= jogo.getGenero() %></dd>
+                        <dd>Gênero: <%= jogo.getGenero() %></dd>
                         <%
                             if(jogo.getDlcs().size() != 0)
                             {
@@ -69,14 +71,20 @@
                             }
                             }
                         %>
-                        
                         <%
                             if(produto instanceof Dlc)
                             {
                                 Dlc dlc = (Dlc) produto;
                         %>
-                        <dd>Jogo: <%= dlc.getJogoAssociado().getNome() %></dd>
+                        <dd>Jogo associado: <%= dlc.getJogoAssociado().getId() %></dd>
                         <% } %>
+                        <dd>Desenvolvedora: <%= produto.getDesenvolvedora().getId() %></dd>
+                        <dd>Distribuidora: <%= produto.getDistribuidora().getId() %></dd>
+                    </div>
+
+                    <div class="lista-botoes">
+                        <a href="<%= request.getAttribute("urlSubmit") %>?acao=listarPorId&id=<%= produto.getId() %>">Editar Produto</a>
+                        <a href="<%= request.getAttribute("urlSubmit") %>?acao=deletar&id=<%= produto.getId() %>" onclick="return confirm('Tem certeza que deseja remover?');">Remover Produto</a>
                     </div>
                 </div>
                 <% } %>

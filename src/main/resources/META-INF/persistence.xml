@@ -14,9 +14,9 @@
         <class>br.cefetrj.model.Empresa</class>
         <class>br.cefetrj.model.Desenvolvedora</class>
         <class>br.cefetrj.model.Distribuidora</class>
-        <!-- <class>br.cefetrj.model.Produto</class> -->
-        <!-- <class>br.cefetrj.model.Jogo</class> -->
-        <!-- <class>br.cefetrj.model.Dlc</class> -->
+        <class>br.cefetrj.model.Produto</class>
+        <class>br.cefetrj.model.Jogo</class>
+        <class>br.cefetrj.model.Dlc</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

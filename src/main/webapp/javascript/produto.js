@@ -6,14 +6,14 @@ function verificarTipo()
 {
     if(tipo.value == "jogo")
     {
-        generoContainer.style.display = "block";
+        generoContainer.style.display = "grid";
         jogoAssociadoContainer.style.display = "none";
 
     }
     
     else if(tipo.value == "dlc")
     {
-        jogoAssociadoContainer.style.display = "block";
+        jogoAssociadoContainer.style.display = "grid";
         generoContainer.style.display = "none";
         
     }

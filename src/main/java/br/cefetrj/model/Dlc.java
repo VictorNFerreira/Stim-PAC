@@ -1,12 +1,23 @@
 package br.cefetrj.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@DiscriminatorValue("dlc")
 public class Dlc extends Produto
 {
+    @ManyToOne
     private Jogo jogoAssociado;
 
-    public Dlc(String nome, double preco, Jogo jogoAssociado)
+    public Dlc()
     {
-        super(nome, preco);
+        super();
+
+    }
+
+    public Dlc(String nome, Desenvolvedora desenvolvedora, Distribuidora distribuidora, Jogo jogoAssociado)
+    {
+        super(nome, desenvolvedora, distribuidora);
         this.setJogoAssociado(jogoAssociado);
 
     }

@@ -11,7 +11,7 @@ public class Compra extends Entidade
     @ManyToOne
     private Conta conta;
 
-    @Transient
+    @ManyToOne
     private Produto produto;
 
     @Column(name = "valor")
@@ -28,10 +28,10 @@ public class Compra extends Entidade
 
     }
 
-    public Compra(Conta conta, /*Produto produto,*/ double valor/* , LocalDate dataCompra*/)
+    public Compra(Conta conta, Produto produto, double valor/* , LocalDate dataCompra*/)
     {
         this.setConta(conta);
-        /*this.setProduto(produto);*/
+        this.setProduto(produto);
         this.setValor(valor);
         /*this.setDataCompra(dataCompra);*/
 

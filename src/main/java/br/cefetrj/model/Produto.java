@@ -22,16 +22,22 @@ public abstract class Produto extends Entidade
     @Column(name = "avaliacoes")
     protected double avaliacoes;
 
-    @Transient
+    @ManyToOne
     protected Desenvolvedora desenvolvedora;
 
-    @Transient
+    @ManyToOne
     protected Distribuidora distribuidora;
 
-    public Produto(String nome, double preco)
+    public Produto()
+    {
+
+    }
+
+    public Produto(String nome, Desenvolvedora desenvolvedora, Distribuidora distribuidora)
     {
         this.setNome(nome);
-        this.setPreco(preco);
+        this.setDesenvolvedora(desenvolvedora);
+        this.setDistribuidora(distribuidora);
 
     }
 

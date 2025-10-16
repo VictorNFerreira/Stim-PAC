@@ -3,14 +3,27 @@ package br.cefetrj.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.*;
+
+@Entity
+@DiscriminatorValue("jogo")
 public class Jogo extends Produto
 {
+    @Column(name = "genero")
     private String genero;
+
+    @OneToMany(targetEntity = Dlc.class, mappedBy = "jogoAssociado", fetch = FetchType.EAGER)
     private List<Dlc> dlcs = new ArrayList<Dlc>();
 
-    public Jogo(String nome, double preco, String genero)
+    public Jogo()
     {
-        super(nome, preco);
+        super();
+
+    }
+
+    public Jogo(String nome, Desenvolvedora desenvolvedora, Distribuidora distribuidora, String genero)
+    {
+        super(nome, desenvolvedora, distribuidora);
         this.setGenero(genero);
 
     }
@@ -33,16 +46,10 @@ public class Jogo extends Produto
 
     }
 
-    public void adicionarDlc(Dlc dlc)
+    public void setDlcs(List<Dlc> dlcs)
     {
-        this.dlcs.add(dlc);
-
-    }
-
-    public void removerDlc(Dlc dlc)
-    {
-        this.dlcs.remove(dlc);
-
+        this.dlcs = dlcs;
+        
     }
 
 }

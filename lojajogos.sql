@@ -1,0 +1,60 @@
+DROP DATABASE IF EXISTS lojajogos;
+CREATE DATABASE IF NOT EXISTS lojajogos;
+USE lojajogos;
+
+CREATE TABLE conta
+(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    senha VARCHAR(50) NOT NULL,
+    saldo DECIMAL NOT NULL DEFAULT 0
+
+);
+
+CREATE TABLE biblioteca
+(
+    id INT NOT NULL PRIMARY KEY,
+    quantidade_itens INT NOT NULL DEFAULT 0,
+    FOREIGN KEY(id) REFERENCES conta(id) ON DELETE RESTRICT ON UPDATE CASCADE
+
+);
+
+CREATE TABLE empresa
+(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL
+
+
+);
+
+CREATE TABLE produto
+(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    preco DECIMAL,
+    avaliacoes DECIMAL NOT NULL DEFAULT 0,
+    desenvolvedora_id INT NOT NULL,
+    distribuidora_id INT NOT NULL,
+    FOREIGN KEY(desenvolvedora_id) REFERENCES empresa(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY(distribuidora_id) REFERENCES empresa(id) ON DELETE RESTRICT ON UPDATE CASCADE
+
+)
+
+CREATE TABLE compra
+(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    conta_id INT,
+    produto_id INT,
+    valor DECIMAL NOT NULL,
+    forma_de_pagamento VARCHAR(20) NOT NULL,
+    FOREIGN KEY(conta_id) REFERENCES conta(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY(produto_id) REFERENCES produto(id) ON DELETE RESTRICT ON UPDATE CASCADE
+
+);
+
+SELECT * FROM conta;
+SELECT * FROM biblioteca;
+SELECT * FROM compra;
+SELECT * FROM empresa;
+SELECT * FROM produto;

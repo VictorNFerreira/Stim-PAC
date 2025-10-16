@@ -19,7 +19,7 @@
             <nav class="cabecalho-menu">
                 <ul>
                     <li><a href="conta">Contas</a></li>
-                    <li><a href="Produto">Produtos</a></li>
+                    <li><a href="produto">Produtos</a></li>
                     <li><a href="empresa">Empresas</a></li>
                     <li><a href="compra">Compras</a></li>
                     <li><a href="biblioteca">Bibliotecas</a></li>
@@ -43,7 +43,7 @@
                     <div class="lista-dados">
                         <dt>
                             <p>Id: <%= conta.getId() %></p>
-                            <p>Nome: <%=conta.getNome() %></p>
+                            <p>Nome: <%= conta.getNome() %></p>
                         </dt>
                         <dd>Email: <%= conta.getEmail() %></dd>
                         <dd>Senha: <%= conta.getSenha() %></dd>

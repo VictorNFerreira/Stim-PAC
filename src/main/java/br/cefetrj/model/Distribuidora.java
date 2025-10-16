@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 @DiscriminatorValue("distribuidora")
 public class Distribuidora extends Empresa
 {
-    @Transient
+    @OneToMany(targetEntity = Produto.class, mappedBy = "distribuidora", fetch = FetchType.EAGER)
     private List<Produto> produtosPublicados;
 
     public Distribuidora()
