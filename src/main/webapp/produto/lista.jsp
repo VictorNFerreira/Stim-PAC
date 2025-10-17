@@ -78,8 +78,8 @@
                         %>
                         <dd>Jogo associado: <%= dlc.getJogoAssociado().getId() %></dd>
                         <% } %>
-                        <dd>Desenvolvedora: <%= produto.getDesenvolvedora().getId() %></dd>
-                        <dd>Distribuidora: <%= produto.getDistribuidora().getId() %></dd>
+                        <dd>Desenvolvedora: <%= produto.getDesenvolvedora().getNome() %></dd>
+                        <dd>Distribuidora: <%= produto.getDistribuidora().getNome() %></dd>
                     </div>
 
                     <div class="lista-botoes">

@@ -53,8 +53,19 @@ CREATE TABLE compra
 
 );
 
+CREATE TABLE biblioteca_jogo
+(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    biblioteca_id INT NOT NULL,
+    jogo_id INT NOT NULL,
+    FOREIGN KEY(biblioteca_id) REFERENCES biblioteca(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY(jogo_id) REFERENCES produto(id) ON DELETE RESTRICT ON UPDATE CASCADE
+
+)
+
 SELECT * FROM conta;
 SELECT * FROM biblioteca;
 SELECT * FROM compra;
 SELECT * FROM empresa;
 SELECT * FROM produto;
+SELECT * FROM biblioteca_jogo;

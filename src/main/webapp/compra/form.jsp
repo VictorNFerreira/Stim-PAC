@@ -29,7 +29,7 @@
 
                         <div>
                             <label for="produto">Id do Produto</label>
-                            <input id="produto" type="text" name="produto" value="<%= compra != null ? compra.getProduto() : "" %>">
+                            <input id="produto" type="text" name="produto" value="<%= compra != null ? compra.getProduto().getId() : "" %>">
                         </div>
                     </div>
                     

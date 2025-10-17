@@ -34,6 +34,11 @@ public abstract class GenericServlet<Classe extends Entidade> extends HttpServle
 
     protected abstract Classe preencherEntidade(HttpServletRequest request);
 
+    protected void inserirBibliotecaJogo(Classe entidade, Conta conta)
+    {
+
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
     {
@@ -137,6 +142,7 @@ public abstract class GenericServlet<Classe extends Entidade> extends HttpServle
             {
                 Classe entidade = preencherEntidade(request);
                 dao.inserir(entidade, conta);
+                inserirBibliotecaJogo(entidade, conta);
                     
             }
 

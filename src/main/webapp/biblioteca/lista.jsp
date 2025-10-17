@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="br.cefetrj.model.Biblioteca" %>
+<%@ page import="br.cefetrj.model.Jogo" %>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
@@ -42,6 +43,20 @@
                     <div class="lista-dados">
                         <dt>Id: <%= biblioteca.getId() %></dt>
                         <dd>Id da conta: <%= biblioteca.getConta().getId() %></dd>
+                        <%
+                            if(biblioteca.getJogos().size() != 0)
+                            {
+                        %>
+                        <dd>Jogos: 
+                        <%
+                            for(Jogo jogo : biblioteca.getJogos())
+                            {
+                                out.println(jogo.getNome() + ", ");
+
+                            }
+                        %>
+                        </dd>
+                        <% } %>
                         <dd>Quantidade de itens: <%= biblioteca.getQuantidadeItens() %></dd>
                     </div>
                 </div>

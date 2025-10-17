@@ -1,5 +1,6 @@
 package br.cefetrj.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -13,8 +14,9 @@ public class Biblioteca extends Entidade
     @JoinColumn(name = "id")
     private Conta conta;
 
-    @Transient
-    private List<Jogo> jogos;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "biblioteca_jogo", joinColumns = @JoinColumn(name = "biblioteca_id"), inverseJoinColumns = @JoinColumn(name = "jogo_id"))
+    private List<Jogo> jogos = new ArrayList<Jogo>();
 
     @Column(name = "quantidade_itens")
     private int quantidadeItens;

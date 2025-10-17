@@ -15,6 +15,9 @@ public class Jogo extends Produto
     @OneToMany(targetEntity = Dlc.class, mappedBy = "jogoAssociado", fetch = FetchType.EAGER)
     private List<Dlc> dlcs = new ArrayList<Dlc>();
 
+    @ManyToMany(mappedBy = "jogos")
+    private List<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();
+
     public Jogo()
     {
         super();
