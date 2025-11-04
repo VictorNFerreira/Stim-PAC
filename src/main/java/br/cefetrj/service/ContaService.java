@@ -25,18 +25,6 @@ public class ContaService
 
     }
 
-    public void atualizar(Conta conta)
-    {
-        repositorio.save(conta);
-
-    }
-
-    public void deletar(Integer id)
-    {
-        repositorio.deleteById(id);
-
-    }
-
     public List<Conta> listar()
     {
         return repositorio.findAll();
@@ -46,6 +34,18 @@ public class ContaService
     public Optional<Conta> listarPorId(Integer id)
     {
         return repositorio.findById(id);
+
+    }
+
+    public Conta editar(Conta conta)
+    {
+        return repositorio.save(conta);
+
+    }
+
+    public void deletar(Integer id)
+    {
+        repositorio.deleteById(id);
 
     }
 

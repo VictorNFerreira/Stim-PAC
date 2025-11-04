@@ -62,10 +62,10 @@ public class ContaTOInput implements Serializable
     public Conta build()
     {
         Conta conta = new Conta();
-        conta.setId(id);
-        conta.setNome(nome);
-        conta.setEmail(email);
-        conta.setSenha(senha);
+        conta.setId(this.id);
+        conta.setNome(this.nome);
+        conta.setEmail(this.email);
+        conta.setSenha(this.senha);
         return conta;
 
     }
