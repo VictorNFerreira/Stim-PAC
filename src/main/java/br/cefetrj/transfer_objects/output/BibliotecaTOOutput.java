@@ -10,13 +10,13 @@ public class BibliotecaTOOutput
 {
     private Integer id;
     private int quantidadeItens;
-    //private List<Jogo> jogos = new ArrayList<Jogo>();
+    private List<Jogo> jogos = new ArrayList<Jogo>();
 
     public BibliotecaTOOutput(Biblioteca biblioteca)
     {
         this.id = biblioteca.getId();
         this.quantidadeItens = biblioteca.getQuantidadeItens();
-        //this.jogos = biblioteca.getJogos();
+        this.jogos = biblioteca.getJogos();
 
     }
 
@@ -32,17 +32,17 @@ public class BibliotecaTOOutput
 
     }
     
-    // public List<Jogo> getJogos()
-    // {
-    //     return jogos;
+    public List<Jogo> getJogos()
+    {
+        return jogos;
 
-    // }
+    }
 
-    // public void setJogos(List<Jogo> jogos)
-    // {
-    //     this.jogos = jogos;
+    public void setJogos(List<Jogo> jogos)
+    {
+        this.jogos = jogos;
 
-    // }
+    }
 
     public int getQuantidadeItens()
     {

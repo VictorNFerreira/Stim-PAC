@@ -1,14 +1,16 @@
 package br.cefetrj.transfer_objects.input;
 
+import java.io.Serializable;
+
 import br.cefetrj.model.Biblioteca;
 
-public class BibliotecaTOInput
+public class BibliotecaTOInput implements Serializable
 {
     private Integer id;
 
     public Integer getId()
     {
-        return id;
+        return this.id;
 
     }
 
@@ -21,7 +23,7 @@ public class BibliotecaTOInput
     public Biblioteca build()
     {
         Biblioteca biblioteca = new Biblioteca();
-        biblioteca.setId(id);
+        biblioteca.setId(this.id);
         return biblioteca;
 
     }

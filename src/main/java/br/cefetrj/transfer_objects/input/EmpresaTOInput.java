@@ -1,10 +1,12 @@
 package br.cefetrj.transfer_objects.input;
 
+import java.io.Serializable;
+
 import br.cefetrj.model.Desenvolvedora;
 import br.cefetrj.model.Distribuidora;
 import br.cefetrj.model.Empresa;
 
-public class EmpresaTOInput
+public class EmpresaTOInput implements Serializable
 {
     private Integer id;
     private String nome;
@@ -12,7 +14,7 @@ public class EmpresaTOInput
 
     public Integer getId()
     {
-        return id;
+        return this.id;
 
     }
 
@@ -24,7 +26,7 @@ public class EmpresaTOInput
 
     public String getNome()
     {
-        return nome;
+        return this.nome;
 
     }
 
@@ -36,7 +38,7 @@ public class EmpresaTOInput
 
     public String getTipo()
     {
-        return tipo;
+        return this.tipo;
 
     }
 
@@ -48,20 +50,20 @@ public class EmpresaTOInput
 
     public Empresa build()
     {
-        if(tipo.equals("desenvolvedora"))
+        if(this.tipo.equals("desenvolvedora"))
         {
             Desenvolvedora empresa = new Desenvolvedora();
-            empresa.setId(id);
-            empresa.setNome(nome);
+            empresa.setId(this.id);
+            empresa.setNome(this.nome);
             return empresa;
 
         }
 
-        else if(tipo.equals("distribuidora"))
+        else if(this.tipo.equals("distribuidora"))
         {
             Distribuidora empresa = new Distribuidora();
-            empresa.setId(id);
-            empresa.setNome(nome);
+            empresa.setId(this.id);
+            empresa.setNome(this.nome);
             return empresa;
 
         }

@@ -1,5 +1,6 @@
 package br.cefetrj.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -9,7 +10,7 @@ import jakarta.persistence.*;
 public class Desenvolvedora extends Empresa
 {
     @OneToMany(targetEntity = Produto.class, mappedBy = "desenvolvedora", fetch = FetchType.EAGER)
-    private List<Produto> produtosDesenvolvidos;
+    private List<Produto> produtosDesenvolvidos = new ArrayList<Produto>();
 
     public Desenvolvedora()
     {
