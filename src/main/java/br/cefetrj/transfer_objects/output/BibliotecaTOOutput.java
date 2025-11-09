@@ -1,22 +1,29 @@
 package br.cefetrj.transfer_objects.output;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.cefetrj.model.Biblioteca;
-import br.cefetrj.model.Jogo;
 
 public class BibliotecaTOOutput
 {
     private Integer id;
     private int quantidadeItens;
-    private List<Jogo> jogos = new ArrayList<Jogo>();
+    private List<ProdutoTOOutput> jogos;
 
     public BibliotecaTOOutput(Biblioteca biblioteca)
     {
         this.id = biblioteca.getId();
         this.quantidadeItens = biblioteca.getQuantidadeItens();
-        this.jogos = biblioteca.getJogos();
+        if(biblioteca.getJogos() != null)
+        {
+            this.jogos = biblioteca.getJogos().stream().map(jogo ->
+            {
+                ProdutoTOOutput jogoTO = new ProdutoTOOutput(jogo);
+                return jogoTO;
+
+            }).toList();
+
+        }
 
     }
 
@@ -32,13 +39,13 @@ public class BibliotecaTOOutput
 
     }
     
-    public List<Jogo> getJogos()
+    public List<ProdutoTOOutput> getJogos()
     {
         return jogos;
 
     }
 
-    public void setJogos(List<Jogo> jogos)
+    public void setJogos(List<ProdutoTOOutput> jogos)
     {
         this.jogos = jogos;
 

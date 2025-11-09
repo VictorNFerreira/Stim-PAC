@@ -86,9 +86,9 @@ public class ContaController
     @DeleteExchange(value = "/{id}")
     @ApiOperation(value = "Deletar conta", notes = "Remove a conta de acordo com o ID passado")
     public ResponseEntity<Void> deletar(@PathVariable("id") Integer id)
-    {
-        contaService.deletar(id);
+    {   
         bibliotecaService.deletar(id);
+        contaService.deletar(id);
         return ResponseEntity.noContent().build();
 
     }
