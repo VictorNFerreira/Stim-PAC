@@ -49,4 +49,10 @@ public class ContaService
 
     }
 
+    public Optional<Conta> listarPorEmail(String email)
+    {
+        return repositorio.findByEmail(email);
+
+    }
+
 }

@@ -18,6 +18,9 @@ public class Conta extends Entidade
     @Column(name = "saldo")
     private double saldo;
 
+    @Column(name = "papel")
+    private String papel;
+
     @OneToOne(mappedBy = "conta")
     private Biblioteca biblioteca;
 
@@ -80,6 +83,18 @@ public class Conta extends Entidade
     {
         this.saldo = saldo;
 
+    }
+
+    public String getPapel()
+    {
+        return papel;
+
+    }
+
+    public void setPapel(String papel)
+    {
+        this.papel = papel;
+        
     }
 
     public Biblioteca getBiblioteca()

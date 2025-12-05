@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +41,7 @@ public class ProdutoController
 
     @PostMapping
     @ApiOperation(value = "Adicionar produto", notes = "Adiciona um novo produto no banco de dados")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<ProdutoTOOutput> adicionar(@RequestBody ProdutoTOInput input)
     {
         Produto produto = input.build();
@@ -80,6 +82,7 @@ public class ProdutoController
 
     @PutMapping(value = "/{id}")
     @ApiOperation(value = "Atualizar produto", notes = "Atualiza um produto de acordo com o ID passado")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<ProdutoTOOutput> editar(@RequestBody ProdutoTOInput input)
     {
         Produto produto = produtoService.editar(input.build());
@@ -89,6 +92,7 @@ public class ProdutoController
 
     @DeleteExchange(value = "/{id}")
     @ApiOperation(value = "Deletar produto", notes = "Remove um produto de acordo com o ID passado")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<Void> deletar(@PathVariable("id") Integer id)
     {
         Produto produto = produtoService.listarPorId(id).orElse(null);

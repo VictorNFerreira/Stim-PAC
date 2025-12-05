@@ -10,6 +10,7 @@ public class ContaTOInput implements Serializable
     private String nome;
     private String email;
     private String senha;
+    private String papel;
 
     public Integer getId()
     {
@@ -59,6 +60,18 @@ public class ContaTOInput implements Serializable
 
     }
 
+    public String getPapel()
+    {
+        return papel;
+
+    }
+
+    public void setPapel(String papel)
+    {
+        this.papel = papel;
+
+    }
+
     public Conta build()
     {
         Conta conta = new Conta();
@@ -66,8 +79,11 @@ public class ContaTOInput implements Serializable
         conta.setNome(this.nome);
         conta.setEmail(this.email);
         conta.setSenha(this.senha);
+        conta.setPapel(this.papel);
         return conta;
 
     }
+
+    
     
 }

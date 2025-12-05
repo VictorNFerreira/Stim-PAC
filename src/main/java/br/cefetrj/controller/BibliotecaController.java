@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,6 +39,7 @@ public class BibliotecaController
     
     @PostMapping
     @ApiOperation(value = "Adicionar biblioteca", notes = "Adiciona uma nova biblioteca no banco de dados")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<BibliotecaTOOutput> adicionar(@RequestBody BibliotecaTOInput input)
     {
         Biblioteca biblioteca = input.build();
@@ -50,6 +52,7 @@ public class BibliotecaController
 
     @GetMapping
     @ApiOperation(value = "Listar bibliotecas", notes = "Retorna todas as bibliotecas")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<List<BibliotecaTOOutput>>listar()
     {
         return ResponseEntity.ok(bibliotecaService.listar().stream().map(BibliotecaTOOutput::new).toList());
@@ -58,6 +61,7 @@ public class BibliotecaController
 
     @GetMapping(value = "/{id}")
     @ApiOperation(value = "Listar por ID", notes = "Retorna uma biblioteca de acordo com o ID passado")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<BibliotecaTOOutput> listarPorId(@PathVariable("id") Integer id)
     {
         return ResponseEntity.ok(new BibliotecaTOOutput(bibliotecaService.listarPorId(id).orElse(null)));
@@ -66,6 +70,7 @@ public class BibliotecaController
 
     @PutMapping(value = "/{id}")
     @ApiOperation(value = "Atualizar biblioteca", notes = "Atualiza uma biblioteca de acordo com o ID passado")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<BibliotecaTOOutput> editar(@RequestBody BibliotecaTOInput input)
     {
         Biblioteca biblioteca = bibliotecaService.editar(input.build());
@@ -75,6 +80,7 @@ public class BibliotecaController
 
     @DeleteExchange(value = "/{id}")
     @ApiOperation(value = "Deletar biblioteca", notes = "Remove uma biblioteca de acordo com o ID passado")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<Void> deletar(@PathVariable("id") Integer id)
     {
         bibliotecaService.deletar(id);

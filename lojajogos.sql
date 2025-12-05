@@ -8,7 +8,8 @@ CREATE TABLE conta
     nome VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     senha VARCHAR(50) NOT NULL,
-    saldo DECIMAL NOT NULL DEFAULT 0
+    saldo DECIMAL NOT NULL DEFAULT 0,
+    papel VARCHAR(50) NOT NULL
 
 );
 
@@ -69,3 +70,5 @@ SELECT * FROM compra;
 SELECT * FROM empresa;
 SELECT * FROM produto;
 SELECT * FROM biblioteca_jogo;
+
+UPDATE conta SET papel = "admin" WHERE id = 1;

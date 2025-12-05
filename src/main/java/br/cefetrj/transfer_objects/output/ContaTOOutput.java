@@ -9,6 +9,7 @@ public class ContaTOOutput
     private String email;
     private String senha;
     private double saldo;
+    private String papel;
     private BibliotecaTOOutput biblioteca;
 
     public ContaTOOutput(Conta conta)
@@ -18,6 +19,7 @@ public class ContaTOOutput
         this.email = conta.getEmail();
         this.senha = conta.getSenha();
         this.saldo = conta.getSaldo();
+        this.papel = conta.getPapel();
         if(conta.getBiblioteca() != null)
             this.biblioteca = new BibliotecaTOOutput(conta.getBiblioteca());
 
@@ -80,6 +82,18 @@ public class ContaTOOutput
     public void setSaldo(double saldo)
     {
         this.saldo = saldo;
+
+    }
+
+    public String getPapel()
+    {
+        return papel;
+        
+    }
+
+    public void setPapel(String papel)
+    {
+        this.papel = papel;
 
     }
 

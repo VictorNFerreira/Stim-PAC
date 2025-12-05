@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.service.annotation.DeleteExchange;
 
@@ -43,6 +45,7 @@ public class ContaController
     
     @PostMapping
     @ApiOperation(value = "Adicionar conta", notes = "Adiciona uma nova conta no banco de dados")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<ContaTOOutput> adicionar(@RequestBody ContaTOInput input)
     {
         Conta conta = input.build();
@@ -60,6 +63,7 @@ public class ContaController
 
     @GetMapping
     @ApiOperation(value = "Listar contas", notes = "Retorna todas as contas")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<List<ContaTOOutput>>listar()
     {
         return ResponseEntity.ok(contaService.listar().stream().map(ContaTOOutput::new).toList());
@@ -68,6 +72,7 @@ public class ContaController
 
     @GetMapping(value = "/{id}")
     @ApiOperation(value = "Listar por ID", notes = "Retorna uma conta de acordo com o ID passado")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<ContaTOOutput> listarPorId(@PathVariable("id") Integer id)
     {
         return ResponseEntity.ok(new ContaTOOutput(contaService.listarPorId(id).orElse(null)));
@@ -76,6 +81,7 @@ public class ContaController
 
     @PutMapping(value = "/{id}")
     @ApiOperation(value = "Atualizar conta", notes = "Atualiza uma conta existente no banco de dados")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<ContaTOOutput> editar(@RequestBody ContaTOInput input)
     {
         Conta conta = contaService.editar(input.build());
@@ -85,11 +91,20 @@ public class ContaController
 
     @DeleteExchange(value = "/{id}")
     @ApiOperation(value = "Deletar conta", notes = "Remove a conta de acordo com o ID passado")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<Void> deletar(@PathVariable("id") Integer id)
     {   
         bibliotecaService.deletar(id);
         contaService.deletar(id);
         return ResponseEntity.noContent().build();
+
+    }
+
+    @GetMapping(value = "/listar-por-email")
+    @ApiOperation(value = "Listar por email", notes = "Retorna uma conta de acordo com o email passado")
+    public ResponseEntity<ContaTOOutput> listarPorEmail(@RequestParam(required = false) String email)
+    {
+        return contaService.listarPorEmail(email).map(conta -> ResponseEntity.ok(new ContaTOOutput(conta))).orElse(ResponseEntity.notFound().build());
 
     }
 

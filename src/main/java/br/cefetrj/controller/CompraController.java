@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,6 +48,7 @@ public class CompraController
     
     @PostMapping
     @ApiOperation(value = "Adicionar compra", notes = "Adiciona uma nova compra no banco de dados")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<CompraTOOutput> adicionar(@RequestBody CompraTOInput input)
     {
         Compra compra = input.build();
@@ -68,6 +70,7 @@ public class CompraController
 
     @GetMapping
     @ApiOperation(value = "Listar compras", notes = "Retorna todas as compras")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<List<CompraTOOutput>>listar()
     {
         return ResponseEntity.ok(compraService.listar().stream().map(CompraTOOutput::new).toList());
@@ -76,6 +79,7 @@ public class CompraController
 
     @GetMapping(value = "/{id}")
     @ApiOperation(value = "Listar por ID", notes = "Retorna uma compra de acordo com o ID passado")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<CompraTOOutput> listarPorId(@PathVariable("id") Integer id)
     {
         return ResponseEntity.ok(new CompraTOOutput(compraService.listarPorId(id).orElse(null)));
@@ -84,6 +88,7 @@ public class CompraController
 
     @PutMapping(value = "/{id}")
     @ApiOperation(value = "Atualizar compra", notes = "Atualiza uma compra de acordo com o ID passado")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<CompraTOOutput> editar(@RequestBody CompraTOInput input)
     {
         Compra compra = compraService.editar(input.build());
@@ -93,6 +98,7 @@ public class CompraController
 
     @DeleteExchange(value = "/{id}")
     @ApiOperation(value = "Deletar compra", notes = "Remove uma compra de acordo com o ID passado")
+    @PreAuthorize("hasRole('admin')")
     public ResponseEntity<Void> deletar(@PathVariable("id") Integer id)
     {
         Compra compra = compraService.listarPorId(id).orElse(null);
